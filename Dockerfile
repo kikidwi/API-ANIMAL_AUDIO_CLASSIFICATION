@@ -20,7 +20,7 @@ RUN apt-get update && apt-get install -y \
 WORKDIR /app
 
 # Copy requirements first to leverage Docker cache
-COPY requirements.txt .
+COPY Requirements.txt .
 
 # Install Python dependencies with retry mechanism
 RUN pip install --no-cache-dir --retries 3 --timeout 100 -r Requirements.txt
