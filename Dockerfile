@@ -1,4 +1,4 @@
-FROM python:3.9-slim
+FROM python:3.9-slim-buster
 
 # Set environment variables
 ENV PYTHONUNBUFFERED=1
@@ -22,8 +22,8 @@ WORKDIR /app
 # Copy requirements first to leverage Docker cache
 COPY requirements.txt .
 
-# Install Python dependencies
-RUN pip install --no-cache-dir -r requirements.txt
+# Install Python dependencies with retry mechanism
+RUN pip install --no-cache-dir --retries 3 --timeout 100 -r requirements.txt
 
 # Copy the rest of the application
 COPY . .
