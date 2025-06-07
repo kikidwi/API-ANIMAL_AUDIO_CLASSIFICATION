@@ -29,8 +29,11 @@ RUN pip install --no-cache-dir --retries 3 --timeout 100 -r Requirements.txt
 # Copy the rest of the application
 COPY . .
 
+# Make start script executable
+RUN chmod +x start.sh
+
 # Expose port
 EXPOSE ${PORT}
 
 # Command to run the application
-CMD uvicorn main:app --host 0.0.0.0 --port ${PORT} 
+CMD ["./start.sh"] 
