@@ -23,7 +23,7 @@ WORKDIR /app
 COPY requirements.txt .
 
 # Install Python dependencies with retry mechanism
-RUN pip install --no-cache-dir --retries 3 --timeout 100 -r requirements.txt
+RUN pip install --no-cache-dir --retries 3 --timeout 100 -r Requirements.txt
 
 # Copy the rest of the application
 COPY . .
