@@ -1,0 +1,20 @@
+# Virtual Environment
+animal_sound_env/
+venv/
+env/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Model files (since they're large)
+*.h5
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db 
