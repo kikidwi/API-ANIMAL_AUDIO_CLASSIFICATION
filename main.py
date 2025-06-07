@@ -21,6 +21,9 @@ import logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+# Get port from environment variable or use default
+PORT = int(os.getenv("PORT", 8000))
+
 # Import librosa after setting environment variables
 try:
     import librosa
@@ -485,4 +488,4 @@ async def get_animals():
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(app, host="0.0.0.0", port=PORT)

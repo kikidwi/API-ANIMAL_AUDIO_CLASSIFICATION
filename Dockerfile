@@ -9,6 +9,7 @@ ENV TF_ENABLE_ONEDNN_OPTS=0
 ENV NUMBA_DISABLE_INTEL_SVML=1
 ENV NUMBA_NUM_THREADS=1
 ENV OMP_NUM_THREADS=1
+ENV PORT=8000
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
@@ -29,7 +30,7 @@ RUN pip install --no-cache-dir --retries 3 --timeout 100 -r Requirements.txt
 COPY . .
 
 # Expose port
-EXPOSE 8000
+EXPOSE ${PORT}
 
 # Command to run the application
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"] 
+CMD uvicorn main:app --host 0.0.0.0 --port ${PORT} 
